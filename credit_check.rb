@@ -1,4 +1,6 @@
-card_number = "4929735477250543"
+puts "Please enter your credit card number:"
+card_number = gets.chomp
+
 summed_digits = []
 valid = false
 
@@ -12,14 +14,11 @@ until card_number[x] == nil
         separated_digit_string_1 = doubled_string[0] 
         separated_digit_string_2 = doubled_string[1]
         separated_digit_summed = separated_digit_string_1.to_i + separated_digit_string_2.to_i
-        #print separated_digit_summed => insert into array instead
         summed_digits.insert(0, separated_digit_summed)
       else
-        #print doubled_digit => insert into array instead
         summed_digits.insert(0, doubled_digit)
       end
   else
-    #print digit => insert into array instead
     summed_digits.insert(0, digit)
   end
   x += -1
@@ -27,19 +26,18 @@ end
 
 print summed_digits
 
-sum = 0
-total_sum = 0
-y = 0
-z = 1
-until y == summed_digits.length
-  sum = summed_digits[y] + summed_digits[z]
-  total_sum += sum
-  y += 2
-  z += 2
- end
+ y = 0
+ sum = 0
+ until y == summed_digits.length
+   sum += summed_digits[y]
+   y += 1
+  end
 
-if total_sum % 10 == 0
+
+if sum % 10 == 0
+  puts ""
   puts "The number is valid!"
 else
+  puts ""
   puts "The number is invalid!"
 end
